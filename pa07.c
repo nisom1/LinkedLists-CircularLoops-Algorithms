@@ -2,8 +2,8 @@
 #include "answer07.h"
 #include <stdlib.h>
 #include <stdio.h>
-
-#define NUM_CASES (10)
+#define HINTS
+#define NUM_CASES 10
 
 /* Used for the test generator to create a loop
  * in a the linked list intentionally. The loop
@@ -19,7 +19,8 @@ bool createLoop(node_t * head, int from, int to)
   node_t * fromNode;
   node_t * toNode;
   node_t * cur = head;
-  for (int i = 0; i <=from; i++)
+  int i;
+  for (i = 0; i <=from; i++)
   {
     // out of bounds
     if (cur == NULL)
@@ -65,12 +66,14 @@ int main(int argc, char * * argv)
                    "extra large sized linked list that loops from"};
 #endif
 
-  int testSizes[] =        {0    , 1    , 1   , 10   , 30  , 151  , 829 , 1510, 2472, 3199};
+  int testSizes[] = {0    , 1    , 1   , 10   , 30  , 151  , 829 , 1510, 2472, 3199};
   bool expectedAnswers[] = {false, false, true, false, true, false, true, true, false, true};
   node_t * linkedLists[NUM_CASES] = {NULL};
-  for (int i = 0; i < NUM_CASES; i++)
+  int i;
+  int j;
+  for (i = 0; i < NUM_CASES; i++)
   {
-    for (int j = 0; j < testSizes[i]; j++)
+    for (j = 0; j < testSizes[i]; j++)
     {
       insert(&(linkedLists[i]), 0, j);
     }
@@ -92,19 +95,20 @@ int main(int argc, char * * argv)
   createLoop(linkedLists[9], 3198, 1027);
 
   int incorrect = 0;
-  for (int i = 0; i < NUM_CASES; i++) {
-    bool actual = isCircular(linkedLists[i]);
-    if (actual != expectedAnswers[i])
+  int m;
+  for (m = 0; m < NUM_CASES; m++) {
+    bool actual = isCircular(linkedLists[m]);
+    if (actual != expectedAnswers[m])
     {
       incorrect++;
     }
 
 #ifdef HINTS
-    printf("[*] Testing %s\n", hints[i]);
+    printf("[*] Testing %s\n", hints[m]);
     printf("[%c] Your result: %s, Correct result: %s\n",
-          (actual == expectedAnswers[i] ? '*' : '!'),
+          (actual == expectedAnswers[m] ? '*' : '!'),
           (actual ? "true " : "false"),
-          (expectedAnswers[i] ? "true" : "false"));
+          (expectedAnswers[m] ? "true" : "false"));
 #endif
   }
   return incorrect;

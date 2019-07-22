@@ -29,9 +29,9 @@ node_t * insert(node_t ** head, int index, int value)
   // so the head will need to be modified
   if (index == 0)
   {
-    node_t * old_head = *head;
-    *head = obj_add;
-    (*head)->next = old_head;
+    node_t * old_head = *head; // the old head (the old index0), pointed to index1 (index1 = *head)
+    *head = obj_add; // head now points ot the NEW index0
+    (*head)->next = old_head; // the NEW element (ind0) points to the OLD element (now, ind1)
     return obj_add;
   }
 
