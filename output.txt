@@ -1,0 +1,8 @@
+Commit ID tagged for submission: 7962376fa49c3974bf159360b61d769b90e51ef4
+Submission graded at: 2019-07-28 01:39:22
+
+[*] Cleaning up...
+pa07.c:5:1: error: "HINTS" redefined
+<command-line>: error: this is the location of the previous definition
+make: *** [pa07.o] Error 1
+[!] There was an error in compiling the program!
